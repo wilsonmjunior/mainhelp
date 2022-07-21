@@ -1,8 +1,13 @@
-import { Heading, VStack } from 'native-base';
+import { Box, Heading, Icon, useTheme, VStack } from 'native-base';
+import { Envelope, Key } from 'phosphor-react-native';
+
+import { Input } from '../../components/Input';
 
 import Logo from '../../assets/logo_primary.svg';
 
 export function SignIn() {
+  const { colors } = useTheme();
+
   return (
     <VStack
       flex={1}
@@ -20,6 +25,32 @@ export function SignIn() {
       >
         Acesse sua conta  
       </Heading>
+
+      <Box 
+        width='100%'
+        mt={10}
+      >
+        <Input 
+          placeholder='E-mail' 
+          marginBottom={4}
+          InputLeftElement={
+            <Icon 
+              as={<Envelope color={colors.gray[300]} />} 
+              ml={4}
+            />
+          }
+        />
+        <Input
+          placeholder='Senha' 
+          InputLeftElement={
+            <Icon 
+              as={<Key color={colors.gray[300]} />} 
+              ml={4}
+            />
+          }
+          secureTextEntry
+        />
+      </Box>
     </VStack>
   );
 }
