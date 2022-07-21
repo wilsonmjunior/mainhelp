@@ -4,6 +4,7 @@ import { Envelope, Key } from 'phosphor-react-native';
 import { Input } from '../../components/Input';
 
 import Logo from '../../assets/logo_primary.svg';
+import { Button } from '../../components/Button';
 
 export function SignIn() {
   const { colors } = useTheme();
@@ -50,6 +51,8 @@ export function SignIn() {
           }
           secureTextEntry
         />
+
+        <Button title='Entrar' marginTop={8} />
       </Box>
     </VStack>
   );
