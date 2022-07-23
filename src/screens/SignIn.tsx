@@ -1,13 +1,21 @@
+import { useState } from 'react';
 import { Box, Heading, Icon, useTheme, VStack } from 'native-base';
 import { Envelope, Key } from 'phosphor-react-native';
 
-import { Input } from '../../components/Input';
+import { Input } from '../components/Input';
+import { Button } from '../components/Button';
 
-import Logo from '../../assets/logo_primary.svg';
-import { Button } from '../../components/Button';
+import { LogoPrimary } from '../assets';
 
 export function SignIn() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const { colors } = useTheme();
+
+  const handleEnter = () => {
+    console.warn(email, password);
+  }
 
   return (
     <VStack
@@ -17,7 +25,7 @@ export function SignIn() {
       px={8}
       pt={24}
     >
-      <Logo />
+      <LogoPrimary />
 
       <Heading 
         color='secondary.700' 
@@ -40,6 +48,9 @@ export function SignIn() {
               ml={4}
             />
           }
+          onChangeText={text => setEmail(text)}
+          autoCapitalize='none'
+          keyboardType='email-address'
         />
         <Input
           placeholder='Senha' 
@@ -50,9 +61,10 @@ export function SignIn() {
             />
           }
           secureTextEntry
+          onChangeText={text => setPassword(text)}
         />
 
-        <Button title='Entrar' marginTop={8} />
+        <Button title='Entrar' marginTop={8} onPress={handleEnter} />
       </Box>
     </VStack>
   );
